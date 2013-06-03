@@ -74,7 +74,8 @@ Collection.prototype.push = function(model){
 };
 
 /**
- * Remove `model` from the collection.
+ * Remove `model` from the collection, returning `true` when present,
+ * otherwise `false`.
  *
  * @param {Object} model
  * @api public

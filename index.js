@@ -63,3 +63,16 @@ Collection.prototype.add =
 Collection.prototype.push = function(model){
   return this.models.push(model);
 };
+
+/**
+ * Remove `model` from the collection.
+ *
+ * @param {Object} model
+ * @api public
+ */
+
+Collection.prototype.remove = function(model){
+  var i = this.indexOf(model);
+  if (~i) this.models.splice(i, 1);
+  return !! ~i;
+};

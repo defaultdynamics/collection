@@ -59,6 +59,7 @@ Collection.prototype.length = function(){
  * @api public
  */
 
+Collection.prototype.add =
 Collection.prototype.push = function(model){
   return this.models.push(model);
 };

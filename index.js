@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-var Enumerable = require('enumerable');
+var Emitter = require('emitter')
+  , Enumerable = require('enumerable');
 
 /**
  * Expose `Collection`.
@@ -21,6 +22,12 @@ module.exports = Collection;
 function Collection(models) {
   this.models = models || [];
 }
+
+/**
+ * Mixin emitter.
+ */
+
+Emitter(Collection.prototype);
 
 /**
  * Mixin enumerable.
@@ -61,7 +68,9 @@ Collection.prototype.length = function(){
 
 Collection.prototype.add =
 Collection.prototype.push = function(model){
-  return this.models.push(model);
+  var length = this.models.push(model);
+  this.emit('add', model);
+  return length;
 };
 
 /**
@@ -73,6 +82,9 @@ Collection.prototype.push = function(model){
 
 Collection.prototype.remove = function(model){
   var i = this.indexOf(model);
-  if (~i) this.models.splice(i, 1);
+  if (~i) {
+    this.models.splice(i, 1);
+    this.emit('remove', model);
+  }
   return !! ~i;
 };

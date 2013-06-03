@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "keywords": ["enumerable", "data", "model", "db"],
   "dependencies": {
+    "component/emitter": "*",
     "component/enumerable": "*"
   },
   "development": {},
